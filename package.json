@@ -1,0 +1,17 @@
+{
+  "name": "csvexporter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "CsvExporter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babyparse": "^0.4.6",
+    "bluebird": "^3.5.0",
+    "chance": "^1.0.6",
+    "mongodb": "^2.2.25"
+  }
+}
