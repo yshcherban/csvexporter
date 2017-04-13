@@ -23,15 +23,15 @@ dbConnect(`${hostname}/${dbName}`).then(db => {
 	dbReference = db;
 
 	const userCollection 	= db.collection(userCollectionName);
-	const userCursor 		= userCollection.find({"permissions.schoolId": ObjectId(schoolID)});
+	const userCursor 		= userCollection.find({"permissions.schoolId": ObjectId(schoolID), "permissions": {$size: 1}, "permissions.preset": "STUDENT" });
 
 	return userCursor.toArray();
 
 }).then(userData => {
-	const schoolCollection 	= dbReference.collection('schools');
+	//const schoolCollection 	= dbReference.collection('schools');
 
 	return userData.map(userObj => {
-		const form = schoolCollection.find({"_id": ObjectId(schoolID), "forms._id": userObj.permissions[0].details.formId}, {"_id": 0, "forms.name": 1});
+		//const form = schoolCollection.find({"_id": ObjectId(schoolID), "forms._id": userObj.permissions[0].details.formId}, {"_id": 0, "forms.name": 1});
 		//const house = schoolCollection.find({"_id": ObjectId(schoolID), "houses._id": userObj.permissions[0].details.houseId}, {"_id": 1, "houses.name": 1});
 
 		return {
